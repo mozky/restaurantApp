@@ -1,0 +1,39 @@
+<template name="sideBar">
+  {{#if currentUser}}
+  <div class="row">
+    <p class="lead">Bienvenido, {{currentUser.profile.name}}</p>
+    <div class="list-group">
+      {{#if currentUser.profile.admin}}
+      <a href="/" class="list-group-item">Menu</a>
+      <a href="/pedidos" class="list-group-item">Pedidos</a>
+      <button type="button" class="list-group-item">Editar Menu</button>
+      <button type="button" class="list-group-item">Modificar usuarios</button>
+      {{else}}
+      <a href="/" class="list-group-item">Menu</a>
+      <a href="/misPedidos" class="list-group-item">Mis Pedidos</a>
+      <button type="button" class="list-group-item">Modificar mi perfil</button>
+      {{/if}}
+      <button type="button" class="list-group-item">Cambiar Contraseña</button>
+      <button type="button" class="list-group-item list-group-item-danger logout">Cerrar Sesion</button>
+    </div>
+  </div>
+  {{else}}
+  <div class="row">
+    <p class="lead">Bienvenido</p>
+    <form role="form" id="loginForm" class="loginForm">
+      <p>Ingresa los datos de tu cuenta para poder hacer un pedido: </p>
+      <div class="form-group">
+        <label class="sr-only" for="form-email">Correo electronico</label>
+        <input type="text" name="loginEmail" placeholder="Correo electronico..." class="form-email form-control">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="form-password">Contraseña</label>
+        <input type="password" name="loginPassword" placeholder="Contraseña..." class="form-password form-control">
+      </div>
+      <button type="submit" class="btn btn-modal">Iniciar sesion</button>
+    </form>
+    <hr>
+    <p><small>Acude al restaurante para pedir tu cuenta sin costo alguno.</small></p>
+  </div>
+  {{/if}}
+</template>

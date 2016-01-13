@@ -1,0 +1,88 @@
+<template name="newOrderModal">
+  <div class="modal fade" id="newOrderModal" tabindex="-1" role="dialog" aria-labelledby="newOrderModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Nuevo pedido</h4>
+        </div>
+        <div class="modal-body">
+          <div hidden id="newOrderSuccess" class="alert alert-success" role="alert">
+            <h4>Pedido creado con exito.</h4>
+          </div>
+
+          <form role="form" id="newOrderForm" class="registrationForm">
+            <h5>¿Que quisieras pedir?: </h5>
+            <div class="form-group">
+              <!-- Split into columns -->
+              <div class="row">
+                <div class="col-lg-4">
+                  <label class="sr-only" for="form-name">Platillo</label>
+                  <div class="input-group">
+                    <input type="radio" name="platillo" value="Pozole"> Pozole
+                  </div>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                  <div class="input-group">
+                    <input type="radio" name="platillo" value="Pescado empanizado"> Pescado Empanizado
+                  </div>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                  <div class="input-group">
+                    <input type="radio" name="platillo" value="Carne asada"> Carne asada
+                  </div>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-4 -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <hr>
+            <div class="form-group">
+              <h5>¿Agua de que sabor?: </h5>
+              <div class="row">
+                <div class="col-lg-6">
+                  <label class="sr-only" for="form-name">Platillo</label>
+                  <div class="input-group">
+                    <input type="radio" name="agua" value="horchata"> Horchata
+                  </div>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <input type="radio" name="agua" value="jamaica"> Jamaica
+                  </div>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <hr>
+            <div class="form-group checkbox">
+              <label>
+                <h5>Mi agua de 1lt por +$10
+                  <input type="checkbox" name="unLitro">
+                </h5>
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" form="newOrderForm" id="newOrderForm" class="btn btn-primary btn-submit">Confirmar Pedido</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</template>

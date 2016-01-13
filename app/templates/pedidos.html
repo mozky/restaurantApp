@@ -1,0 +1,52 @@
+<template name="pedidos">
+  <div class="row">
+    <div class="col-md-12">
+      <div vlass="row">
+        <header>
+          <h1>Pedidos pendientes ({{incompleteCount}})</h1>
+
+          <label class="hide-completed">
+            <input type="checkbox" checked="{{hideCompleted}}" /> Esconder pedidos finalizados
+          </label>
+
+          <!-- {{#if currentUser}}
+          <form class="new-task">
+            <input type="text" name="text" placeholder="Type to add new pedidos" />
+          </form>
+          {{/if}} -->
+        </header>
+
+        <ul class="pedidos">
+          {{#each pedidos}} {{> pedido}} {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="pedido">
+  <li class="{{#if checked}} checked {{/if}}">
+    <button type="button" class="btn btn-default delete" aria-label="delete">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </button>
+
+    <span class="text">
+      <strong>{{name}}</strong> - {{pedido}}, agua {{#if unLitro}} grande {{else}} chica {{/if}} de {{agua}} - {{dir}} - {{tel}}
+    </span>
+
+    <div class="btn-group estado">
+      <button type="button" class="btn btn-default">{{estado}}</button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <button type="button" class="btn btn-default cambiar-estado" value="Aceptado">Aceptado</button>
+          <button type="button" class="btn btn-default cambiar-estado" value="Enviado">Enviado</button>
+          <button type="button" class="btn btn-default cambiar-estado" value="Finalizado">Finalizado</button>
+        </li>
+      </ul>
+    </div>
+
+  </li>
+</template>

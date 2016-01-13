@@ -1,0 +1,25 @@
+<template name="userPedidos">
+  <div class="row">
+    <div class="col-md-12">
+      <div vlass="row">
+        <header>
+          <h1>Mis pedidos</h1>
+        </header>
+        <hr>
+        <ul class="pedidos">
+          {{#each pedidos}} {{> miPedido}} {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="miPedido">
+  {{#if isOwner}}
+  <li class="{{#if checked}} checked {{/if}}">
+    <span class="text">
+      <strong>{{estado}}</strong> - {{pedido}}, agua {{#if unLitro}} grande {{else}} chica {{/if}} de {{agua}}
+    </span>
+  </li>
+  {{/if}}
+</template>

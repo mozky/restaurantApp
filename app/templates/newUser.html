@@ -1,0 +1,63 @@
+<template name="newUserModal">
+  <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Agregar nuevo usuario</h4>
+        </div>
+        <div class="modal-body">
+          <div hidden id="newUserSuccess" class="alert alert-success" role="alert">
+            <p>Usuario agregado con exito.</p>
+          </div>
+
+          <form role="form" id="newUserForm" class="registrationForm">
+            <p>Ingresa los datos del nuevo usuario: </p>
+            <div class="form-group">
+              <label class="sr-only" for="form-name">Nombre</label>
+              <input type="text" name="registerName" placeholder="Nombre..." class="form-name form-control" id="form-name">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-lastName">Apellido</label>
+              <input type="text" name="registerLastName" placeholder="Apellido..." class="form-lastName form-control" id="form-lastName">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-email">Email</label>
+              <input type="email" name="registerEmail" placeholder="Email..." class="form-email form-control" id="form-email">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-password">Password</label>
+              <input type="password" name="registerPassword" placeholder="Password..." class="form-password form-control" id="form-password">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-password-confirmation">Repeat password</label>
+              <input type="password" name="registerPasswordConfirmation" placeholder="Repeat password..." class="form-password form-control" id="form-password-confirmation">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-dir">Direccion</label>
+              <input type="text" name="registerDir" placeholder="Monte Libano #56 Col. Lomas de Chapultepec" class="form-dir form-control" id="form-dir">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="form-tel">Telefono</label>
+              <input type="number" name="registerTel" placeholder="5510201234" class="form-tel form-control" id="form-tel">
+            </div>
+            <div class="form-group checkbox">
+              <label>
+                <input type="checkbox" name="registerAdmin"> Cuenta de Administrador
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" form="newUserForm" id="newUserForm" class="btn btn-primary btn-submit">Agregar usuario</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</template>
