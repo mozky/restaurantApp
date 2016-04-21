@@ -23,10 +23,11 @@ Meteor.methods({
     console.log("Se agregó el usuario: " + user.email);
   },
   addPedido: function(pedido) {
-    // Make sure the user is logged in before inserting a pedido
+    // Make sure user is logged in
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
+    //Inserta un pedido a la base de datos
     Pedidos.insert({
       pedido: pedido.platillo,
       agua: pedido.agua,
@@ -36,15 +37,16 @@ Meteor.methods({
       name: Meteor.user().profile.name + " " + Meteor.user().profile.lastName,
       dir: Meteor.user().profile.dir,
       tel: Meteor.user().profile.tel,
-      estado: "Pendiente"
+      estado: "Solicitado"
     });
   },
   deletePedido: function(pedidoId) {
     var pedido = Pedidos.findOne(pedidoId);
+    //Make sure user is logged in
     if (!Meteor.userId()) {
-      // If the pedido is private, make sure only the owner can delete it
       throw new Meteor.Error("not-authorized");
     }
+    //Quita un pedido de la base de datos
     Pedidos.remove(pedidoId);
   },
   setChecked: function(pedidoId, setChecked) {
@@ -186,25 +188,24 @@ if (Meteor.isClient) {
 
   Template.pedido.events({
     "click .toggle-checked": function() {
-      // Set the checked property to the opposite of its current value
+      // Marca un pedido como finalizado
       Meteor.call("setChecked", this._id, !this.checked);
     },
     "click .delete": function() {
+      //Elimina un pedido
       Meteor.call("deletePedido", this._id);
     },
     "click .cambiar-estado": function(event) {
+      //Cambia el estado de un pedido
       var estado = event.target.value;
       $(event.target).siblings().removeClass('active');
       $(event.target).addClass('active');
       Meteor.call("setState", this._id, estado);
-      if (estado === "Finalizado") {
+      if (estado === "Pagado") {
         Meteor.call("setChecked", this._id, true);
       } else {
         Meteor.call("setChecked", this._id, false);
       }
-    },
-    "click .toggle-private": function() {
-      Meteor.call("setPrivate", this._id, !this.private);
     }
   });
 
